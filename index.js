@@ -83,27 +83,36 @@ function handleEvent(event) {
     echo = { type: 'text', text: event.message.text + 'นะจ้ะ' };  
   }*/
   var req_message = event.message.text;
-  if (req_message === 'booking'){
-	 echo = { type: 'text', text: 'reply by file '+bookingReq.bookingReq(event) };
-  }else if(req_message === 'listChange'){   
-	 echo = listQue.listQueReq(event);
-  }else if(req_message === 'confirm'){
-	  echo = { type: 'text', text: 'reply by file '+admConfirm.admConfirm(event) };
-  }else if(req_message === 'q'){
-    echo = { type: 'text', text: 'reply by file '+usrReqQue.getQue(event) };
-    transporter.sendMail(mailOptions, function (err, info) {
-      if(err)
-        console.log(err)
-      else
-        console.log(info);
-    });
-  }else if(req_message === 'myQ'){
-	  echo = { type: 'text', text: 'reply by file '+myQue.getMyQue(event) };
-  }else if(req_message === 'setQ'){e
-	   echo = { type: 'text', text: 'reply by file '+setQue.setQue(event) };
-  }else {
-	  echo = { type: 'text', text: req_message };
-  }
+  var userId = event.source.userId;
+
+  if(userId === 'U99372d31d3009c721049695f636424c0'){
+      if(req_message === 'listChange'){   
+          echo = listQue.listQueReq(event);
+      }else if(req_message === 'confirm'){
+          echo = { type: 'text', text: 'reply by file '+admConfirm.admConfirm(event) };
+      }else{
+          echo = { type: 'text', text: 'ขออภัยคุณไม่มีสิทธิ์ใช้งานในส่วนนี้นะครับ'};
+      }
+  }else{
+
+      if (req_message === 'booking'){
+        echo = { type: 'text', text: 'reply by file '+bookingReq.bookingReq(event) };
+      }else  if(req_message === 'q'){
+        echo = { type: 'text', text: 'reply by file '+usrReqQue.getQue(event) };
+        transporter.sendMail(mailOptions, function (err, info) {
+          if(err)
+            console.log(err)
+          else
+            console.log(info);
+        });
+      }else if(req_message === 'myQ'){
+        echo = { type: 'text', text: 'reply by file '+myQue.getMyQue(event) };
+      }else if(req_message === 'setQ'){
+        echo = { type: 'text', text: 'reply by file '+setQue.setQue(event) };
+      }else{
+          echo = { type: 'text', text: 'ขออภัยคุณไม่มีสิทธิ์ใช้งานในส่วนนี้นะครับ'};
+      }
+    }
   
 
   // use reply API
