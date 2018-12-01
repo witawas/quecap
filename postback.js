@@ -18,15 +18,11 @@ module.exports = {
                     
                 });
                             //console.log(result[i].id);
-                
+                //msg =  { type: 'text', text: 'send notification success!! : '+result[i].id};
+                //return msg;
           };
 
         });
-
-        setTimeout(function(){ 
-          msg =  { type: 'text', text: 'send notification success!! '};
-          return msg;
-        }, 3000);
         //msg =  { type: 'text', text: 'send notification success!! '};
         
         //return msg;
