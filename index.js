@@ -83,11 +83,9 @@ app.post('/callback', line.middleware(config), (req, res) => {
 function handleEvent(event) {
   console.log(event);
 
-  if(event.type == 'postback'){
-     return client.replyMessage(event.replyToken, postback.handle_postback(event));
-  }
   
-  if (event.type !== 'message' || event.message.type !== 'text') {
+  
+  if (event.type !== 'message' || event.message.type !== 'text' || event.type !== 'postback') {
     // ignore non-text-message event
     return Promise.resolve(null);
   }
@@ -105,6 +103,10 @@ function handleEvent(event) {
   var userId = event.source.userId;
 
   if(userId === 'U99372d31d3009c721049695f636424c0'){
+      if(event.type == 'postback'){
+         return client.replyMessage(event.replyToken, postback.handle_postback(event));
+      }
+  
       if(req_message === 'listChange'){   
           echo = listQue.listQueReq(event);
       }else if(req_message === 'confirm'){ 
