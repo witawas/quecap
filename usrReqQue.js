@@ -6,8 +6,8 @@ module.exports = {
         con.query("SELECT queue FROM `capdata` WHERE status = 2 order by queue desc limit 1", function (err, result, fields) {
           if (err) throw err;
           console.log(result);
-          
-          return result[0].queue;
+          console.log(result.queue);
+          return result.queue;
         });
       });
       
