@@ -2,24 +2,24 @@ module.exports = {
    listQueReq: function(event) {
    		msg = {
             "type": "template",
-            "altText": "this is a buttons template",
+            "altText": "Change List",
             "template": {
                 "type": "buttons",
                 "thumbnailImageUrl": "https://www.thesun.co.uk/wp-content/uploads/2017/03/fifa-17-2.jpg?strip=all&w=742&quality=100",
-                "title": "Menu",
-                "text": "Please select",
+                "title": "Change List",
+                "text": "",
                 "actions": [{
                     "type": "postback",
-                    "label": "Buy",
-                    "data": "action=buy&itemid=123"
+                    "label": "CR 1",
+                    "data": "action=approve&id=1"
                 }, {
                     "type": "postback",
-                    "label": "Add to cart",
-                    "data": "action=add&itemid=123"
+                    "label": "CR 2",
+                    "data": "action=approve&id=2"
                 }, {
-                    "type": "uri",
-                    "label": "View detail",
-                    "uri": "http://example.com/page/123"
+                    "type": "postback",
+                    "label": "CR 2",
+                    "data": "action=approve&id=3"
                 }]
             }
         }
