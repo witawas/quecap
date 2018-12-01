@@ -109,7 +109,7 @@ function handleEvent(event) {
       if (req_message === 'booking'){
         echo = { type: 'text', text: 'reply by file '+bookingReq.bookingReq(event) };
       }else  if(req_message === 'q'){
-        echo = { type: 'text', text: 'reply by file '+usrReqQue.getQue(event) };
+        echo = { type: 'text', text: 'reply by file '+usrReqQue.getQue(event,con) };
         transporter.sendMail(mailOptions, function (err, info) {
           if(err)
             console.log(err)

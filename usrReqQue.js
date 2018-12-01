@@ -1,5 +1,5 @@
 module.exports = {
-   getQue: function(event) {
+   getQue: function(event,con) {
      //return 'file usrReqQue';
      con.connect(function(err) {
         if (err) throw err;
