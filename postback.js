@@ -6,7 +6,8 @@ module.exports = {
         if(action == 'approve'){
             var id  =  data.queryKey['id'];            
         }
-        echo = { type: 'text', text: 'test handle_postback : '+action };
+        msg =  { type: 'text', text: 'test handle_postback : '+action };
+        return msg;
         //data: 'action=approve&id=3'
         //var q = uri.queryKey['q'];
    }
