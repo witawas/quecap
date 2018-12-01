@@ -12,25 +12,17 @@ module.exports = {
 
           for (var i = 0; i < length; i++) 
           {
-
-            //console.log(result[i].id);
+                var query_udpate = "update capdata set capdate = ( select changeinfo.deploydate-1 from changeinfo where changeinfo.changeNo = capdata.changeNo),queue = "+i+" where capdata.id = "+result[i].id;
+                con.query(sql, function (err, result) {
+                    if (err) throw err;
+                    
+                });
+                            //console.log(result[i].id);
                 msg =  { type: 'text', text: 'send notification success!! : '+result[i].id};
                 return msg;
           };
 
         });
-
-
-
-
-
-
-
-
-
-
-
-
         msg =  { type: 'text', text: 'send notification success!! '};
         
         return msg;
