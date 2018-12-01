@@ -266,7 +266,7 @@ async function listCapUpd(event, callback){
 
 
 async function listChange(event, callback){
-   var sql = 'SELECT changeNo FROM capdata where status = 1 and queue = 0';
+   var sql = 'SELECT changeNo FROM capdata where status = 1 and queue = 0 order by reqdate limit 3';
    var content = [];
    var msg ;
    con.query(sql, function (err, result, fields) {
