@@ -13,13 +13,13 @@ const myQue = require('./myQue');
 const setQue = require('./setQue');
 const nodemailer = require('nodemailer');
 
-//var mysql = require('mysql');
-//var con = mysql.createConnection({
-///  host: "119.59.120.32",
-//  user: "gooruapp_queue",
-//  password: "GFhPccLkV4",
-//  database: "gooruapp_queue"
-//});
+var mysql = require('mysql');
+var con = mysql.createConnection({
+  host: "119.59.120.32",
+  user: "gooruapp_queue",
+  password: "GFhPccLkV4",
+  database: "gooruapp_queue"
+});
 
 // const  = rerquie('./fiel')
 
@@ -77,7 +77,8 @@ function handleEvent(event) {
 
   
   
-  if (event.type !== 'message' || event.message.type !== 'text') {
+  if ((event.type !== 'message' || event.message.type !== 'text' ) 
+      && event.type !== 'postback') {
     // ignore non-text-message event
     return Promise.resolve(null);
   }
