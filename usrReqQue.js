@@ -1,5 +1,5 @@
 module.exports = {
-   getQue: function() {
+   getQue: function(event) {
      return 'file usrReqQue';
    }
 }

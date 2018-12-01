@@ -1,5 +1,5 @@
 module.exports = {
-   setQue: function() {
+   setQue: function(event) {
      return 'file setQue';
    }
 }
