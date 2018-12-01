@@ -243,13 +243,13 @@ async function listCapUpd(event, callback){
             "label": "Confirm",
             "data": "confirm"        
         });         
-      });
+      
 
      
       
    // console.log('result checkQueNow', result[0].queue)
-    return callback(content);
-
+    return callback(result);
+   });
   
 }
 // listen on port
