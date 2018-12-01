@@ -120,7 +120,21 @@ async function handleEvent(event) {
   if(userId === 'U99372d31d3009c721049695f636424c0'){
       req_message = req_message.toUpperCase();
       if(req_message.startsWith('LISTCHANGE')){   
-          echo = listQue.listQueReq(event);
+         // echo = listQue.listQueReq(event);
+          await listChange(event, function(result){
+          console.log('resultja ', result);
+          var msg = {
+            "type": "template",
+            "altText": "Change List",
+            "template": {
+                "type": "buttons",
+                "title": "Change List",
+                "text": "List All",
+                "actions": result
+            }
+        }
+          return client.replyMessage(event.replyToken, msg);
+           });  
       }else if(req_message.startsWith('CAPUPDATE')){   
          // echo = capUpd.listCapUpd(event);
           
@@ -222,6 +236,39 @@ async function checkQueNow(event, callback){
 
 
 async function listCapUpd(event, callback){
+   var sql = 'SELECT changeNo FROM capdata where status = 1 and queue = 0';
+   var content = [];
+   var msg ;
+   con.query(sql, function (err, result, fields) {
+    var length = Object.keys(result).length;
+        console.log("<<<<<<<<<<<<<<<<<<length="+length);
+        for (var i = 0; i < length; i++) 
+        {
+              var changeNO = result[i].changeNo;
+              content.push({ 
+                  "type": "postback",
+                  "label": changeNO,
+                  "data": "action=approve&id=2"
+              });              
+
+        } 
+         content.push({ 
+            "type": "postback",
+            "label": "Confirm",
+            "data": "confirm"        
+        });         
+      
+
+     
+      
+   // console.log('result checkQueNow', result[0].queue)
+    return callback(content);
+   });
+  
+}
+
+
+async function listChange(event, callback){
    var sql = 'SELECT changeNo FROM capdata where status = 1 and queue = 0';
    var content = [];
    var msg ;
