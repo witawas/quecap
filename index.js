@@ -190,7 +190,7 @@ async function Booking(data,userId, callback){
 
 
 async function checkQueNow(event, callback){
-  con.query("SELECT queue FROM capdata WHERE capdate = CURRENT_DATE and status = '2' order by queue desc limit 1';", function (err, result, fields) {
+  con.query("SELECT * FROM capdata WHERE capdate = CURRENT_DATE and status = '2' order by queue desc limit 1';", function (err, result, fields) {
     console.log('------->>>>>result checkQueNow', result)
     if(result === undefined){
         return callback('ตอนนี้ยังไม่ถึงเวลา CAP จ้า');
