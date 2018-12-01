@@ -47,17 +47,17 @@ function handleEvent(event) {
   }*/
   var req_message = event.message.text;
   if (req_message === 'booking'){
-
+	 echo = { type: 'text', text: 'booking' };
   }else if(req_message === 'listQ'){
-	  
+	  echo = { type: 'text', text: 'listQ' };
   }else if(req_message === 'confirm'){
-	  
+	  echo = { type: 'text', text: 'confirm' };
   }else if(req_message === 'q'){
-	  
+	  echo = { type: 'text', text: 'q' };
   }else if(req_message === 'myQ'){
-	  
+	  echo = { type: 'text', text: 'myQ' };
   }else if(req_message === 'setQ'){
-	  
+	  echo = { type: 'text', text: 'setQ' };
   }
   
 
