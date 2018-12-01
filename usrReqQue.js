@@ -7,7 +7,7 @@ module.exports = {
           if (err) throw err;
           console.log(result);
           
-          return result;
+          return result.queue;
         });
       });
       
