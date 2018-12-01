@@ -1,12 +1,12 @@
 module.exports = {
 
   
-  getQue: async function(event,con) {
+  getQue: function(event,con) {
      //return 'file usrReqQue ';
      var x;
-     return async.con.connect( function(err) {
+     return con.connect( function(err) {
         if (err) throw err;
-         con.query("SELECT queue FROM `capdata` WHERE status = 2 order by queue desc limit 1", function (err, result, fields) {
+         return con.query("SELECT queue FROM `capdata` WHERE status = 2 order by queue desc limit 1", function (err, result, fields) {
           if (err) throw err;
           console.log(result);
           console.log(result[0].queue);

@@ -120,17 +120,17 @@ async function handleEvent(event) {
       if (req_message === 'booking'){
         echo = { type: 'text', text: 'reply by file '+bookingReq.bookingReq(event) };
       }else  if(req_message === 'q'){
-        console.log("Step111111");
+        console.log("do this");
         const res = await usrReqQue.getQue(event,con);
-        console.log("Step222222");
+        console.log('res here ', res);
         echo = { type: 'text', text: 'reply by file1 ' + res };
-        console.log("Step333333");
-        transporter.sendMail(mailOptions, function (err, info) {
+        console.log('echo here ',echo)
+        /*transporter.sendMail(mailOptions, function (err, info) {
           if(err)
             console.log(err)
           else
             console.log(info);
-        });
+        });*/
 
       }else if(req_message === 'myQ'){
         echo = { type: 'text', text: 'reply by file '+myQue.getMyQue(event) };
@@ -141,7 +141,7 @@ async function handleEvent(event) {
       }
     }
   
-
+  console.log('outside',echo);
   // use reply API
   return client.replyMessage(event.replyToken, echo);
 }
