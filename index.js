@@ -68,7 +68,7 @@ function handleEvent(event) {
   var req_message = event.message.text;
   if (req_message === 'booking'){
 	 echo = { type: 'text', text: 'reply by file '+bookingReq.bookingReq() };
-  }else if(req_message === 'listQ'){
+  }else if(req_message === 'listQ'){   
 	 echo = listQue.listQueReq();
   }else if(req_message === 'confirm'){
 	  echo = { type: 'text', text: 'reply by file '+admConfirm.admConfirm() };
