@@ -160,14 +160,23 @@ async function handleEvent(event) {
   }else{
 
        if (data[0] === 'Booking'){
-      await Booking(data[1],event.source.userId, function(result){
-        console.log('resultja ', result);
+       await Booking(data[1],event.source.userId, function(result){
+      console.log('resultja ', result);
+      if (result>0)
+      {
+        // echo = {type: 'text', text: "Not have Change data"};
+        return client.replyMessage(event.replyToken, { type: 'text', text: "Reserve finished" });
+      }
+      else
+      {
+        // echo = {type: 'text', text: "Reserve finished"};
+        return client.replyMessage(event.replyToken, { type: 'text', text: "Not have Change data" });        
+      }
+      // return client.replyMessage(event.replyToken, { type: 'text', text: result.length });
+    });          
+    // console.log("this is : " + x)   
 
-        return client.replyMessage(event.replyToken, { type: 'text', text: result });
-      });          
-      // console.log("this is : " + x)   
-
-      // handleText(event.message, event.replyToken, event.source);
+    // handleText(event.message, event.replyToken, event.source);
       
     }else  if(req_message === 'q'){
         //console.log("do this"); 
@@ -201,19 +210,23 @@ async function handleEvent(event) {
 }
 
 async function Booking(data,userId, callback){
-  con.query("SELECT * FROM changeinfo where changeNo='"+data+"';", function (err, result, fields) {
-    if(result){
+  console.log("data,userID"+ data + " , " + userId)
+  con.query("SELECT count(1) as count FROM changeinfo where changeNo='"+data+"';", function (err, result, fields) {
+    console.log(result[0].count)
+    if(result[0].count>0){
       console.log('in result')
-        con.query("INSERT INTO capdata (id,changeNo,status,reqdate,lineid,queue,capdate) VALUES ('','"+data+"','1','','"+userId+",'','')", function (err, result2,fields) {
+      var sql = "INSERT INTO capdata (id,changeNo,status,reqdate,lineid) VALUES ('','"+data+"','1',now(),'"+userId+"');"
+      console.log(sql)
+        con.query(sql, function (err, result2,fields) {
+        // con.query("INSERT INTO capdata (id,changeNo,status,reqdate,lineid) VALUES ('','CR009','1','','Uf6f36692fbe9c2af3959aad16bfd05a6')", function (err, result2,fields) {
         if(err){
-          console.log('err in insert')
+          // console.log('err in insert')
         }
       });
       
     }
     console.log('result in booking', result[0])
-    return callback(result[0]);
-
+    return callback(result[0].count);
   });
 }
 
