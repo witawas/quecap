@@ -12,7 +12,7 @@ module.exports = {
 
           for (var i = 0; i < length; i++) 
           {
-                var query_udpate = "update capdata set capdate = ( select changeinfo.deploydate-1 from changeinfo where changeinfo.changeNo = capdata.changeNo),queue = "+i+" where capdata.id = "+result[i].id;
+                var query_udpate = "update capdata set capdate = ( select changeinfo.deploydate-1 from changeinfo where changeinfo.changeNo = capdata.changeNo),queue = "+(i+1)+" where capdata.id = "+result[i].id;
                 con.query(query_udpate, function (err, result) {
                     if (err) throw err;
                     
