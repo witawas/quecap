@@ -10,7 +10,7 @@ module.exports = {
         });
 
 
-        var query_udpate = "update capdata set status = '7'  where capdata.id = "+event.postback.data.replace('action=upd&id=','');
+        var query_udpate = "update capdata set status = '4'  where capdata.id = "+event.postback.data.replace('action=upd&id=','');
                 con.query(query_udpate, function (err, result1) {
                     if (err) throw err;
                     

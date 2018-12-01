@@ -129,15 +129,25 @@ async function handleEvent(event) {
       }
   }else{
 
-      if (req_message === 'booking'){
-        echo = { type: 'text', text: 'reply by file '+bookingReq.bookingReq(event) };
-      }else  if(req_message === 'q'){
+       if (data[0] === 'Booking'){
+      await Booking(data[1],event.source.userId, function(result){
+        console.log('resultja ', result);
+
+        return client.replyMessage(event.replyToken, { type: 'text', text: result });
+      });          
+      // console.log("this is : " + x)   
+
+      // handleText(event.message, event.replyToken, event.source);
+      
+    }else  if(req_message === 'q'){
         //console.log("do this");
-        const res = await usrReqQue.getQue(event,con,function(err, results) {
-            echo = results;
-        });
+        await checkQueNow(event, function(result){
+        console.log('resultja ', result);
+
+        return client.replyMessage(event.replyToken, { type: 'text', text: result });
+      });    
        // console.log('res here ', res);
-        echo = { type: 'text', text: 'reply by file1 ' + res };
+       // echo = { type: 'text', text: 'reply by file1 ' + res };
        // console.log('echo here ',echo)
         /*transporter.sendMail(mailOptions, function (err, info) {
           if(err)
@@ -160,10 +170,32 @@ async function handleEvent(event) {
   return client.replyMessage(event.replyToken, echo);
 }
 
-function booking() {
+async function Booking(data,userId, callback){
+  con.query("SELECT * FROM changeinfo where changeNo='"+data+"';", function (err, result, fields) {
+    if(result){
+      console.log('in result')
+        con.query("INSERT INTO capdata (id,changeNo,status,reqdate,lineid,queue,capdate) VALUES ('','"+data+"','1','','"+userId+",'','')", function (err, result2,fields) {
+        if(err){
+          console.log('err in insert')
+        }
+      });
+      
+    }
+    console.log('result in booking', result[0])
+    return callback(result[0]);
 
+  });
 }
 
+
+async function checkQueNow(event, callback){
+  con.query("SELECT queue FROM `capdata` WHERE status = 2 order by queue desc limit 1';", function (err, result, fields) {
+    
+    console.log('result checkQueNow', result[0].queue)
+    return callback(result[0].queue);
+
+  });
+}
 // listen on port
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

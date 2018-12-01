@@ -1,5 +1,23 @@
 module.exports = {
+
+
+
+
+
+
+
    listCapUpd: function(event) {
+
+
+
+     
+
+
+
+
+
+
+
    		msg = {
             "type": "template",
             "altText": "Cap update List",
