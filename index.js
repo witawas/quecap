@@ -2,7 +2,7 @@
 
 const line = require('@line/bot-sdk');
 const express = require('express');
-const usrReqQue = require('usrReqQue');
+const usrReqQue = require('./usrReqQue');
 // const  = rerquie('./fiel')
 
 // create LINE SDK config from env variables
