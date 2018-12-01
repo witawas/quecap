@@ -140,7 +140,7 @@ async function handleEvent(event) {
       // handleText(event.message, event.replyToken, event.source);
       
     }else  if(req_message === 'q'){
-        //console.log("do this");
+        //console.log("do this"); 
         await checkQueNow(event, function(result){
         console.log('resultja ', result);
 
