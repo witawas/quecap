@@ -17,7 +17,7 @@ module.exports = {
               callback(null,result[0].queue);
          // x= result[0].queue;
         });
-        console.log('should be result here', result);
+       /// console.log('should be result here', result);
       });
       
      
