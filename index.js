@@ -96,8 +96,8 @@ function handleEvent(event) {
   var userId = event.source.userId;
 
   if(userId === 'U99372d31d3009c721049695f636424c0'){
-
-      if(req_message === 'listChange'){   
+      req_message = req_message.toUpperCase();
+      if(req_message.startsWith('LISTCHANGE')){   
           echo = listQue.listQueReq(event);
       }else if(req_message === 'confirm'){ 
           echo = { type: 'text', text: 'reply by file '+admConfirm.admConfirm(event) };
