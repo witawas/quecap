@@ -82,7 +82,7 @@ async function handleEvent(event) {
          console.log("Step1");
          //var msg1 =  { type: 'text', text: 'send notification success!! '};
          //return client.replyMessage(event.replyToken, msg1);
-        return client.replyMessage(event.replyToken, postback.handle_postback(event,con));
+        return client.replyMessage(event.replyToken, postback.handle_postback(event,con,client));
     }
   }
  

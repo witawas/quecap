@@ -1,6 +1,7 @@
 module.exports = {
-   handle_postback: function(event,con) {
-        //Update queue,cap date where capdate and queue is null and status = 1
+   handle_postback: function(event,con,transporter) {
+        
+
         var sql = "select capdata.id as id from capdata inner join changeinfo on capdata.changeNo = changeinfo.changeNo where capdata.status = '1' order by changeinfo.deploydate,capdata.reqdate";
         var msg;
         con.query(sql, function (err, result, fields) 
@@ -13,15 +14,30 @@ module.exports = {
           for (var i = 0; i < length; i++) 
           {
                 var query_udpate = "update capdata set capdate = ( select changeinfo.deploydate-1 from changeinfo where changeinfo.changeNo = capdata.changeNo),queue = "+(i+1)+" where capdata.id = "+result[i].id;
-                con.query(query_udpate, function (err, result) {
+                con.query(query_udpate, function (err, result1) {
                     if (err) throw err;
                     
                 });
-               
-          };
-          return { type: 'text', text: 'send notification success!! '}
+
+                let mailOptions1 = {
+                  from: 'wittawas12t@gmail.com',                // sender
+                  to: 'ruchadaporn.s@kbtg.tech',                // list of receivers
+                  subject: 'Hello from sender',              // Mail subject
+                  html: '<b>Do you receive this mail?</b>'   // HTML body
+                };
+        
+                transporter.sendMail(mailOptions1, function (err, info) {
+                  if(err)
+                    console.log(err)
+                  else
+                    console.log(info);
+                });
+
+          };           
         });
        
    }
+
+
 
 }
