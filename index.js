@@ -13,6 +13,9 @@ const myQue = require('./myQue');
 const setQue = require('./setQue');
 const postback = require('./postback');
 
+const capUpd = require('./capUpd');
+const postback_upd = require('./postback_capUpd');
+
 const nodemailer = require('nodemailer');
 var mysql = require('mysql');
 var con = mysql.createConnection({
@@ -84,6 +87,13 @@ async function handleEvent(event) {
          //return client.replyMessage(event.replyToken, msg1);
         return client.replyMessage(event.replyToken, postback.handle_postback(event,con,client));
     }
+
+    if(event.postback.data.indexOf('action=upd')>=0){
+         console.log("Step22");
+         //var msg1 =  { type: 'text', text: 'send notification success!! '};
+         //return client.replyMessage(event.replyToken, msg1);
+        return client.replyMessage(event.replyToken, postback_upd.handle_postback(event,con,client));
+    }
   }
  
    console.log("Step2");
@@ -110,6 +120,8 @@ async function handleEvent(event) {
       req_message = req_message.toUpperCase();
       if(req_message.startsWith('LISTCHANGE')){   
           echo = listQue.listQueReq(event);
+      }else if(req_message.startsWith('CAPUPDATE')){   
+          echo = capUpd.listCapUpd(event);
       }else if(req_message === 'confirm'){ 
           echo = { type: 'text', text: 'reply by file '+admConfirm.admConfirm(event) };
       }else{
