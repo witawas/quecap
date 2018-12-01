@@ -9,8 +9,8 @@ module.exports = {
                 "title": "Change List",
                 "text": "List All",
                 "actions": [{
-                    "type": "text",
-                    "text": "CR 1",
+                    "type": "postback",
+                    "label": "CR 1",
                     "data": "action=approve&id=1"
                 }, {
                     "type": "postback",
@@ -23,11 +23,12 @@ module.exports = {
                 }, {
                     "type": "postback",
                     "label": "Confirm",
-                    "data": "confirm"
+                    "data": "confim"
                 }]
             }
         }
      	return msg;
    }
+
 
 }
