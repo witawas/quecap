@@ -2,51 +2,51 @@ module.exports = {
    listQueReq: function(event) {
    		msg = {
             "type": "template",
-            "altText": "this is a carousel template",
+            "altText": "Change List",
             "template": {
                 "type": "carousel",
                 "columns": [
                     {
                         "thumbnailImageUrl": "https://www.thesun.co.uk/wp-content/uploads/2017/03/fifa-17-2.jpg?strip=all&w=742&quality=100",
-                        "title": "this is menu",
-                        "text": "description",
+                        "title": "CR 1",
+                        "text": "เพิ่ม Disk",
                         "actions": [
                             {
                                 "type": "postback",
-                                "label": "Buy",
-                                "data": "action=buy&itemid=111"
+                                "label": "Confirm",
+                                "data": "action=confirm&cr=1"
                             },
                             {
                                 "type": "postback",
-                                "label": "Add to cart",
-                                "data": "action=add&itemid=111"
+                                "label": "Approved",
+                               "data": "action=approved&cr=1"
                             },
                             {
-                                "type": "uri",
-                                "label": "View detail",
-                                "uri": "http://example.com/page/111"
+                                "type": "postback",
+                                "label": "Done",
+                                "data": "action=done&cr=1"
                             }
                         ]
                     },
                     {
                         "thumbnailImageUrl": "https://www.thesun.co.uk/wp-content/uploads/2017/03/fifa-17-2.jpg?strip=all&w=742&quality=100",
-                        "title": "this is menu",
-                        "text": "description",
+                        "title": "CR 2",
+                        "text": "เพิ่ม Disk",
                         "actions": [
                             {
                                 "type": "postback",
-                                "label": "Buy",
-                                "data": "action=buy&itemid=222"
+                                "label": "Confirm",
+                                "data": "action=confirm&cr=2"
                             },
                             {
                                 "type": "postback",
-                                "label": "Add to cart",
-                                "data": "action=add&itemid=222"
+                                "label": "Approved",
+                               "data": "action=approved&cr=2"
                             },
                             {
-                                "type": "uri",
-                                "label": "View detail",
-                                "uri": "http://example.com/page/222"
+                                "type": "postback",
+                                "label": "Done",
+                                "data": "action=done&cr=2"
                             }
                         ]
                     }
