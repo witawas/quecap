@@ -193,7 +193,9 @@ async function checkQueNow(event, callback){
   con.query("SELECT queue+1 FROM capdata WHERE capdate = CURRENT_DATE and status = '2' order by queue desc limit 1", function (err, result, fields) {
     //console.log('------->>>>>result checkQueNow', result);
    // console.log('--->>>>---->>>>>result checkQueNow', result[0].queue);
-    if(result === undefined){
+    var length = Object.keys(result).length;
+          console.log(   length   );
+    if(length == 0){
         return callback('ตอนนี้ยังไม่ถึงเวลา CAP จ้า');
     }
    // console.log('result checkQueNow', result[0].queue)
