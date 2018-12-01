@@ -15,11 +15,21 @@ const postback = require('./postback');
 
 const nodemailer = require('nodemailer');
 
-const { Pool, Client } = require('pg')
-const connectionString = 'postgresql://akmirkptyeliex:524ab2d7bcc1e4f860919038c2e03349aa9973ea7b70e95c07fa552088fc9d55@ec2-54-83-8-246.compute-1.amazonaws.com:5432/d90ir74hgrdg52'
+var mysql = require('mysql');
+var con = mysql.createConnection({
+  host: "119.59.120.32",
+  user: "gooruapp_queue",
+  password: "GFhPccLkV4",
+  database: "gooruapp_queue"
+});
+con.connect(function(err) {
+  if (err) throw err;
+  con.query("SELECT * FROM changeinfo", function (err, result, fields) {
+    if (err) throw err;
+    console.log(result);
+  });
+});
 // const  = rerquie('./fiel')
-
-
 
 // create LINE SDK config from env variables
 const config = {
@@ -114,27 +124,6 @@ function handleEvent(event) {
           else
             console.log(info);
         });
-
-
-        const pool = new Pool({
-          connectionString: connectionString,
-        })
-
-        pool.query('SELECT NOW()', (err, res) => {
-          console.log(err, res)
-          pool.end()
-        })
-
-        const clientDB = new Client({
-          connectionString: connectionString,
-        })
-        clientDB.connect()
-
-        clientDB.query('SELECT NOW()', (err, res) => {
-          console.log(err, res)
-          clientDB.end()
-        })
-
 
       }else if(req_message === 'myQ'){
         echo = { type: 'text', text: 'reply by file '+myQue.getMyQue(event) };
