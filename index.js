@@ -76,14 +76,16 @@ app.post('/callback', line.middleware(config), (req, res) => {
 function handleEvent(event) {
   console.log(event);
   if(event.type == 'postback' && userId === 'U99372d31d3009c721049695f636424c0'){
+    console.log("data : "+event.postback.data);
     if(event.postback.data == 'confirm'){
+         console.log("Step1");
          var msg1 =  { type: 'text', text: 'send notification success!! '};
          return client.replyMessage(event.replyToken, msg1);
         //return client.replyMessage(event.replyToken, postback.handle_postback(event));
     }
   }
  
-  
+   console.log("Step2");
   
   if ((event.type !== 'message' || event.message.type !== 'text' ) 
       && event.type !== 'postback') {
