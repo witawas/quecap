@@ -1,7 +1,10 @@
 'use strict';
 
+const firebase = require('firebase')
 const line = require('@line/bot-sdk');
 const express = require('express');
+
+
 const usrReqQue = require('./usrReqQue');
 const bookingReq = require('./booking');
 const listQue = require('./listQue');
@@ -10,11 +13,22 @@ const myQue = require('./myQue');
 const setQue = require('./setQue');
 // const  = rerquie('./fiel')
 
+
+
 // create LINE SDK config from env variables
 const config = {
   channelAccessToken: 'U43M3KfnQlMydCvFi3N9eh0NtDoeMm3kVGPwHIAlz6q9STe0Ea9Fax3LxOcmtBJoPZk2pywFWE/O8iV9j0ah/6g16D6PUu0Z2aR0S+836KODrSv8VuOXWAUvOHtcX7DAwplRgm/LnTv3PVi6lxm8FgdB04t89/1O/w1cDnyilFU=',
-  channelSecret: 'f6cf11d913e4a24648428a0179cec683'
+  channelSecret: 'f6cf11d913e4a24648428a0179cec683',
+  apiKey: "AIzaSyBaVgUFW4DbYaCoFEwkXU7RnzodbwP9pgE",
+  authDomain: "quecap-5fe0a.firebaseapp.com",
+  databaseURL: "https://quecap-5fe0a.firebaseio.com",
+  projectId: "quecap-5fe0a",
+  storageBucket: "",
+  messagingSenderId: "125612660068"
 };
+firebase.initializeApp(config);
+
+
 
 // create LINE SDK client
 const client = new line.Client(config);
