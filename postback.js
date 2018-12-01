@@ -1,6 +1,12 @@
 module.exports = {
    handle_postback: function(event,con,transporter) {
-        
+        var transporter1 = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: 'wittawas12t@gmail.com', // your email
+            pass: 'gmailJow11' // your email password
+          }
+        });
 
         var sql = "select capdata.id as id from capdata inner join changeinfo on capdata.changeNo = changeinfo.changeNo where capdata.status = '1' order by changeinfo.deploydate,capdata.reqdate";
         var msg;
@@ -19,14 +25,14 @@ module.exports = {
                     
                 });
 
-                let mailOptions1 = {
+                var mailOptions1 = {
                   from: 'wittawas12t@gmail.com',                // sender
                   to: 'ruchadaporn.s@kbtg.tech',                // list of receivers
                   subject: 'Hello from sender',              // Mail subject
                   html: '<b>Do you receive this mail?</b>'   // HTML body
                 };
-        
-                transporter.sendMail(mailOptions1, function (err, info) {
+
+                transporter1.sendMail(mailOptions1, function (err, info) {
                   if(err)
                     console.log(err)
                   else
