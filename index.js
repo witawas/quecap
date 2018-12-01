@@ -73,7 +73,7 @@ app.post('/callback', line.middleware(config), (req, res) => {
 });
 
 // event handler
-function handleEvent(event) {
+async function handleEvent(event) {
   console.log(event);
   var userId = event.source.userId;
   if(event.type == 'postback' && userId === 'U99372d31d3009c721049695f636424c0'){
@@ -120,7 +120,8 @@ function handleEvent(event) {
       if (req_message === 'booking'){
         echo = { type: 'text', text: 'reply by file '+bookingReq.bookingReq(event) };
       }else  if(req_message === 'q'){
-        echo = { type: 'text', text: 'reply by file '+usrReqQue.getQue(event,con) };
+        const res = await usrReqQue.getQue(event,con)
+        echo = { type: 'text', text: 'reply by file ' + res };
         transporter.sendMail(mailOptions, function (err, info) {
           if(err)
             console.log(err)
