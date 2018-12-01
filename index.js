@@ -1,6 +1,6 @@
 'use strict';
 
-const firebase = require('firebase')
+//const firebase = require('firebase')
 const line = require('@line/bot-sdk');
 const express = require('express');
 
@@ -13,6 +13,9 @@ const myQue = require('./myQue');
 const setQue = require('./setQue');
 
 const nodemailer = require('nodemailer');
+
+const { Pool, Client } = require('pg')
+const connectionString = 'postgresql://akmirkptyeliex:524ab2d7bcc1e4f860919038c2e03349aa9973ea7b70e95c07fa552088fc9d55@ec2-54-83-8-246.compute-1.amazonaws.com:5432/d90ir74hgrdg52'
 // const  = rerquie('./fiel')
 
 
@@ -20,13 +23,13 @@ const nodemailer = require('nodemailer');
 // create LINE SDK config from env variables
 const config = {
   channelAccessToken: 'U43M3KfnQlMydCvFi3N9eh0NtDoeMm3kVGPwHIAlz6q9STe0Ea9Fax3LxOcmtBJoPZk2pywFWE/O8iV9j0ah/6g16D6PUu0Z2aR0S+836KODrSv8VuOXWAUvOHtcX7DAwplRgm/LnTv3PVi6lxm8FgdB04t89/1O/w1cDnyilFU=',
-  channelSecret: 'f6cf11d913e4a24648428a0179cec683',
-  apiKey: "AIzaSyBaVgUFW4DbYaCoFEwkXU7RnzodbwP9pgE",
-  authDomain: "quecap-5fe0a.firebaseapp.com",
-  databaseURL: "https://quecap-5fe0a.firebaseio.com",
-  projectId: "quecap-5fe0a",
-  storageBucket: "",
-  messagingSenderId: "125612660068"
+  channelSecret: 'f6cf11d913e4a24648428a0179cec683'//,
+//  apiKey: "AIzaSyBaVgUFW4DbYaCoFEwkXU7RnzodbwP9pgE",
+//  authDomain: "quecap-5fe0a.firebaseapp.com",
+//  databaseURL: "https://quecap-5fe0a.firebaseio.com",
+//  projectId: "quecap-5fe0a",
+//  storageBucket: "",
+//  messagingSenderId: "125612660068"
 };
 //firebase.initializeApp(config);
 
@@ -105,6 +108,28 @@ function handleEvent(event) {
           else
             console.log(info);
         });
+
+
+        const pool = new Pool({
+          connectionString: connectionString,
+        })
+
+        pool.query('SELECT NOW()', (err, res) => {
+          console.log(err, res)
+          pool.end()
+        })
+
+        const client = new Client({
+          connectionString: connectionString,
+        })
+        client.connect()
+
+        client.query('SELECT NOW()', (err, res) => {
+          console.log(err, res)
+          client.end()
+        })
+
+
       }else if(req_message === 'myQ'){
         echo = { type: 'text', text: 'reply by file '+myQue.getMyQue(event) };
       }else if(req_message === 'setQ'){
