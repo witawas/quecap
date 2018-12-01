@@ -122,7 +122,13 @@ async function handleEvent(event) {
       if(req_message.startsWith('LISTCHANGE')){   
           echo = listQue.listQueReq(event);
       }else if(req_message.startsWith('CAPUPDATE')){   
-          echo = capUpd.listCapUpd(event);
+         // echo = capUpd.listCapUpd(event);
+          
+           await listCapUpd(event, function(result){
+          console.log('resultja ', result);
+
+          return client.replyMessage(event.replyToken, result);
+           });  
       }else if(req_message === 'confirm'){ 
           echo = { type: 'text', text: 'reply by file '+admConfirm.admConfirm(event) };
       }else{
@@ -202,6 +208,47 @@ async function checkQueNow(event, callback){
     return callback('ตอนนี้ถึง queue ที่ '+result[0].queue+' จ้า');
 
   });
+}
+
+
+
+async function listCapUpd(event, callback){
+   var sql = 'SELECT changeNo FROM capdata where status = 1 and queue = 0"';
+   var content = [];
+   con.query(sql, function (err, result, fields) {
+    var length = Object.keys(result).length;
+          
+        for (var i = 0; i < length; i++) 
+        {
+              var changeNO = result[i].changeNo;
+              content.push({ 
+                  "type": "postback",
+                  "label": changeNO,
+                  "data": "action=approve&id=2"
+              });              
+
+        }          
+      });
+
+      content.push({ 
+          "type": "postback",
+          "label": "Confirm",
+          "data": "confirm"        
+      });
+      msg = {
+            "type": "template",
+            "altText": "Change List",
+            "template": {
+                "type": "buttons",
+                "title": "Change List",
+                "text": "List All",
+                "actions": content
+            }
+        }
+   // console.log('result checkQueNow', result[0].queue)
+    return callback(msg);
+
+  
 }
 // listen on port
 const port = process.env.PORT || 3000;
