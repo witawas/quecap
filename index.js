@@ -2,7 +2,7 @@
 
 const line = require('@line/bot-sdk');
 const express = require('express');
-const userReqQue = require('./userReqQue');
+const usrReqQue = require('./usrReqQue');
 // const  = rerquie('./fiel')
 
 // create LINE SDK config from env variables
@@ -54,7 +54,7 @@ function handleEvent(event) {
   }else if(req_message === 'confirm'){
 	  echo = { type: 'text', text: 'confirm' };
   }else if(req_message === 'q'){
-	  userReqQue.getQue();
+	  usrReqQue.getQue();
   }else if(req_message === 'myQ'){
 	  echo = { type: 'text', text: 'myQ' };
   }else if(req_message === 'setQ'){
