@@ -3,7 +3,7 @@
 const line = require('@line/bot-sdk');
 const express = require('express');
 const usrReqQue = require('./usrReqQue');
-const booking = require('./booking');
+const bookingReq = require('./booking');
 const listQue = require('./listQue');
 const admConfirm = require('./adminConfirm');
 const myQue = require('./myQue');
@@ -53,7 +53,7 @@ function handleEvent(event) {
   }*/
   var req_message = event.message.text;
   if (req_message === 'booking'){
-	 echo = { type: 'text', text: 'reply by file '+booking.bookingReq() };
+	 echo = { type: 'text', text: 'reply by file '+bookingReq.bookingReq() };
   }else if(req_message === 'listQ'){
 	 echo = { type: 'text', text: 'reply by file '+listQue.listQueReq() };
   }else if(req_message === 'confirm'){
