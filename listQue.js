@@ -1,23 +1,28 @@
 module.exports = {
     
+   
    listQueReq: function(event) {
-        var content = " [{
-                "type": "postback",
-                    "label": "CR 1",
-                    "data": "action=approve&id=1"
-                }, {
-                    "type": "postback",
-                    "label": "CR 2",
-                    "data": "action=approve&id=2"
-                }, {
-                    "type": "postback",
-                    "label": "CR 2",
-                    "data": "action=approve&id=3"
-                }, {
-                    "type": "postback",
-                    "label": "Confirm",
-                    "data": "confirm"
-                }]";
+        var content = [];
+        content.push({ 
+            "type": "postback",
+            "label": "CR 1",
+            "data": "action=approve&id=2"
+        });
+        content.push({ 
+            "type": "postback",
+            "label": "CR 2",
+            "data": "action=approve&id=2"
+        });
+        content.push({ 
+            "type": "postback",
+            "label": "CR 3",
+            "data": "action=approve&id=2"
+        });
+        content.push({ 
+            "type": "postback",
+            "label": "CR 4",
+            "data": "action=approve&id=2"
+        });
    		
         msg = {
             "type": "template",
