@@ -215,6 +215,7 @@ async function checkQueNow(event, callback){
 async function listCapUpd(event, callback){
    var sql = 'SELECT changeNo FROM capdata where status = 1 and queue = 0';
    var content = [];
+   var msg ;
    con.query(sql, function (err, result, fields) {
     var length = Object.keys(result).length;
           
