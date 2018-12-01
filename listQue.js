@@ -20,9 +20,14 @@ module.exports = {
                     "type": "postback",
                     "label": "CR 2",
                     "data": "action=approve&id=3"
+                }, {
+                    "type": "postback",
+                    "label": "Confirm",
+                    "data": "action=confirm"
                 }]
             }
         }
      	return msg;
    }
+
 }

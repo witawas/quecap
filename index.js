@@ -71,6 +71,11 @@ app.post('/callback', line.middleware(config), (req, res) => {
 // event handler
 function handleEvent(event) {
   console.log(event);
+
+  if(event.type == 'postback'){
+     return client.replyMessage(event.replyToken, postback.handle_postback(event));
+  }
+  
   if (event.type !== 'message' || event.message.type !== 'text') {
     // ignore non-text-message event
     return Promise.resolve(null);
@@ -119,14 +124,14 @@ function handleEvent(event) {
           pool.end()
         })
 
-        const client = new Client({
+        const clientDB = new Client({
           connectionString: connectionString,
         })
-        client.connect()
+        clientDB.connect()
 
-        client.query('SELECT NOW()', (err, res) => {
+        clientDB.query('SELECT NOW()', (err, res) => {
           console.log(err, res)
-          client.end()
+          clientDB.end()
         })
 
 
