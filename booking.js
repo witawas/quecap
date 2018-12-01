@@ -1,5 +1,5 @@
 module.exports = {
-   bookingReq: function() {
+   bookingReq: function(event) {
      return 'file booking';
    }
 }

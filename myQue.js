@@ -1,5 +1,5 @@
 module.exports = {
-   getMyQue: function() {
+   getMyQue: function(event) {
      return 'file myQue';
    }
 }

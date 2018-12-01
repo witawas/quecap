@@ -1,5 +1,5 @@
 module.exports = {
-   listQueReq: function() {
+   listQueReq: function(event) {
    		msg = {
             "type": "template",
             "altText": "this is a buttons template",

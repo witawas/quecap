@@ -1,5 +1,5 @@
 module.exports = {
-   admConfirm: function() {
+   admConfirm: function(event) {
      return 'file admConfirm';
    }
 }

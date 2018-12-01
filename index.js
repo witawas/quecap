@@ -67,17 +67,17 @@ function handleEvent(event) {
   }*/
   var req_message = event.message.text;
   if (req_message === 'booking'){
-	 echo = { type: 'text', text: 'reply by file '+bookingReq.bookingReq() };
+	 echo = { type: 'text', text: 'reply by file '+bookingReq.bookingReq(event) };
   }else if(req_message === 'listQ'){   
-	 echo = listQue.listQueReq();
+	 echo = listQue.listQueReq(event);
   }else if(req_message === 'confirm'){
-	  echo = { type: 'text', text: 'reply by file '+admConfirm.admConfirm() };
+	  echo = { type: 'text', text: 'reply by file '+admConfirm.admConfirm(event) };
   }else if(req_message === 'q'){
-    echo = { type: 'text', text: 'reply by file '+usrReqQue.getQue() };
+    echo = { type: 'text', text: 'reply by file '+usrReqQue.getQue(event) };
   }else if(req_message === 'myQ'){
-	  echo = { type: 'text', text: 'reply by file '+myQue.getMyQue() };
+	  echo = { type: 'text', text: 'reply by file '+myQue.getMyQue(event) };
   }else if(req_message === 'setQ'){e
-	   echo = { type: 'text', text: 'reply by file '+setQue.setQue() };
+	   echo = { type: 'text', text: 'reply by file '+setQue.setQue(event) };
   }else {
 	  echo = { type: 'text', text: req_message };
   }
