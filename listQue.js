@@ -1,6 +1,36 @@
 module.exports = {
+    
    listQueReq: function(event) {
-   		msg = {
+        var content = " [{
+                "type": "postback",
+                    "label": "CR 1",
+                    "data": "action=approve&id=1"
+                }, {
+                    "type": "postback",
+                    "label": "CR 2",
+                    "data": "action=approve&id=2"
+                }, {
+                    "type": "postback",
+                    "label": "CR 2",
+                    "data": "action=approve&id=3"
+                }, {
+                    "type": "postback",
+                    "label": "Confirm",
+                    "data": "confirm"
+                }]";
+   		
+        msg = {
+            "type": "template",
+            "altText": "Change List",
+            "template": {
+                "type": "buttons",
+                "title": "Change List",
+                "text": "List All",
+                "actions": content
+            }
+        }
+
+        /*msg = {
             "type": "template",
             "altText": "Change List",
             "template": {
@@ -26,7 +56,8 @@ module.exports = {
                     "data": "confirm"
                 }]
             }
-        }
+        }*/
+
      	return msg;
    }
 
