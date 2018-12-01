@@ -23,9 +23,14 @@ module.exports = {
           };
 
         });
-        msg =  { type: 'text', text: 'send notification success!! '};
+
+        setTimeout(function(){ 
+          msg =  { type: 'text', text: 'send notification success!! '};
+          return msg;
+        }, 3000);
+        //msg =  { type: 'text', text: 'send notification success!! '};
         
-        return msg;
+        //return msg;
    }
 
 }
