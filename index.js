@@ -120,11 +120,13 @@ async function handleEvent(event) {
       if (req_message === 'booking'){
         echo = { type: 'text', text: 'reply by file '+bookingReq.bookingReq(event) };
       }else  if(req_message === 'q'){
-        console.log("do this");
-        const res = await usrReqQue.getQue(event,con);
-        console.log('res here ', res);
+        //console.log("do this");
+        const res = await usrReqQue.getQue(event,con,function(err, results) {
+            echo = results;
+        });
+       // console.log('res here ', res);
         echo = { type: 'text', text: 'reply by file1 ' + res };
-        console.log('echo here ',echo)
+       // console.log('echo here ',echo)
         /*transporter.sendMail(mailOptions, function (err, info) {
           if(err)
             console.log(err)

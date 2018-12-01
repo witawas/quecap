@@ -1,7 +1,7 @@
 module.exports = {
 
   
-  getQue: function(event,con) {
+  getQue: function(event,con,cb) {
      //return 'file usrReqQue ';
      var x;
      return con.connect( function(err,callback) {
