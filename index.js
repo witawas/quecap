@@ -236,7 +236,7 @@ async function checkQueNow(event, callback){
 
 
 async function listCapUpd(event, callback){
-   var sql = 'SELECT changeNo FROM capdata where status = 1 and queue = 0';
+   var sql = 'SELECT changeNo,id FROM capdata where status = 1 and capdate = current_date+1';
    var content = [];
    var msg ;
    con.query(sql, function (err, result, fields) {
@@ -245,18 +245,15 @@ async function listCapUpd(event, callback){
         for (var i = 0; i < length; i++) 
         {
               var changeNO = result[i].changeNo;
+               var change_id = result[i].id;
               content.push({ 
                   "type": "postback",
                   "label": changeNO,
-                  "data": "action=approve&id=2"
+                  "data": "action=approve&id="+change_id
               });              
 
         } 
-         content.push({ 
-            "type": "postback",
-            "label": "Confirm",
-            "data": "confirm"        
-        });         
+              
       
 
      
