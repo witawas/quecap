@@ -80,9 +80,9 @@ async function handleEvent(event) {
     console.log(">>>>>>>>>>>>>>data : "+event.postback.data);
     if(event.postback.data == 'confirm'){
          console.log("Step1");
-         var msg1 =  { type: 'text', text: 'send notification success!! '};
-         return client.replyMessage(event.replyToken, msg1);
-        //return client.replyMessage(event.replyToken, postback.handle_postback(event));
+         //var msg1 =  { type: 'text', text: 'send notification success!! '};
+         //return client.replyMessage(event.replyToken, msg1);
+        return client.replyMessage(event.replyToken, postback.handle_postback(event,con));
     }
   }
  
