@@ -249,12 +249,16 @@ async function listCapUpd(event, callback){
               content.push({ 
                   "type": "postback",
                   "label": changeNO,
-                  "data": "action=approve&id="+change_id
+                  "data": "action=upd&id="+change_id
               });              
 
         } 
               
-      
+       content.push({ 
+            "type": "postback",
+            "label": "Confirm",
+            "data": "confirm"        
+        });   
 
      
       
