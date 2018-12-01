@@ -248,7 +248,7 @@ async function listCapUpd(event, callback){
      
       
    // console.log('result checkQueNow', result[0].queue)
-    return callback(result);
+    return callback(content);
    });
   
 }
