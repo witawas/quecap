@@ -11,6 +11,8 @@ const listQue = require('./listQue');
 const admConfirm = require('./adminConfirm');
 const myQue = require('./myQue');
 const setQue = require('./setQue');
+
+const nodemailer = require('nodemailer');
 // const  = rerquie('./fiel')
 
 
@@ -28,7 +30,21 @@ const config = {
 };
 //firebase.initializeApp(config);
 
+// config สำหรับของ gmail
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'wittawas12t@gmail.com', // your email
+    pass: 'gmailJow11' // your email password
+  }
+});
 
+let mailOptions = {
+  from: 'wittawas12t@gmail.com',                // sender
+  to: 'wittawas.t@kbtg.tech',                // list of receivers
+  subject: 'Hello from sender',              // Mail subject
+  html: '<b>Do you receive this mail?</b>'   // HTML body
+};
 
 // create LINE SDK client
 const client = new line.Client(config);
@@ -75,6 +91,12 @@ function handleEvent(event) {
 	  echo = { type: 'text', text: 'reply by file '+admConfirm.admConfirm(event) };
   }else if(req_message === 'q'){
     echo = { type: 'text', text: 'reply by file '+usrReqQue.getQue(event) };
+    transporter.sendMail(mailOptions, function (err, info) {
+      if(err)
+        console.log(err)
+      else
+        console.log(info);
+    });
   }else if(req_message === 'myQ'){
 	  echo = { type: 'text', text: 'reply by file '+myQue.getMyQue(event) };
   }else if(req_message === 'setQ'){e
