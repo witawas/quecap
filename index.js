@@ -54,7 +54,7 @@ function handleEvent(event) {
   }else if(req_message === 'confirm'){
 	  echo = { type: 'text', text: 'confirm' };
   }else if(req_message === 'q'){
-	  usrReqQue.getQue();
+    echo = { type: 'text', text: 'reply by file '+usrReqQue.getQue() };
   }else if(req_message === 'myQ'){
 	  echo = { type: 'text', text: 'myQ' };
   }else if(req_message === 'setQ'){
