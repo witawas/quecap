@@ -240,7 +240,7 @@ async function checkQueNow(event, callback){
     if(length == 0){
         return callback('ตอนนี้ยังไม่ถึงเวลา CAP จ้า');
     }
-   // console.log('result checkQueNow', result[0].queue)
+   // console.log('result checkQueNow', result[0].queue) 
     return callback('ตอนนี้ถึง queue ที่ '+result[0].queue+' จ้า');
 
   });
