@@ -88,7 +88,7 @@ function handleEvent(event) {
   if(userId === 'U99372d31d3009c721049695f636424c0'){
       if(req_message === 'listChange'){   
           echo = listQue.listQueReq(event);
-      }else if(req_message === 'confirm'){
+      }else if(req_message === 'confirm'){ 
           echo = { type: 'text', text: 'reply by file '+admConfirm.admConfirm(event) };
       }else{
           echo = { type: 'text', text: 'ขออภัยคุณไม่มีสิทธิ์ใช้งานในส่วนนี้นะครับ'};
