@@ -1,5 +1,5 @@
-userReqQue.exports = {
+usrReqQue.exports = {
    getQue: function() {
-     echo = { type: 'text', text: 'file userReqQue'};
+     echo = { type: 'text', text: 'file usrReqQue'};
    }
 }
