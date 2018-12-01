@@ -11,6 +11,7 @@ const listQue = require('./listQue');
 const admConfirm = require('./adminConfirm');
 const myQue = require('./myQue');
 const setQue = require('./setQue');
+const postback = require('./postback');
 
 const nodemailer = require('nodemailer');
 
