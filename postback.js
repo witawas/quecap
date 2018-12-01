@@ -17,15 +17,12 @@ module.exports = {
                     if (err) throw err;
                     
                 });
-                            //console.log(result[i].id);
-                //msg =  { type: 'text', text: 'send notification success!! : '+result[i].id};
-                //return msg;
+               
           };
-
+          msg =  { type: 'text', text: 'send notification success!! '};
+          return msg;
         });
-        //msg =  { type: 'text', text: 'send notification success!! '};
-        
-        //return msg;
+       
    }
 
 }
