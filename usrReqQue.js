@@ -7,7 +7,7 @@ module.exports = {
           if (err) throw err;
           console.log(result);
           
-          return callback(null, result.rows)
+          return result[0].queue;
         });
       });
       
