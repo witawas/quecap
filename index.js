@@ -126,8 +126,17 @@ async function handleEvent(event) {
           
            await listCapUpd(event, function(result){
           console.log('resultja ', result);
-
-          return client.replyMessage(event.replyToken, result);
+          var msg = {
+            "type": "template",
+            "altText": "Change List",
+            "template": {
+                "type": "buttons",
+                "title": "Change List",
+                "text": "List All",
+                "actions": result
+            }
+        }
+          return client.replyMessage(event.replyToken, msg);
            });  
       }else if(req_message === 'confirm'){ 
           echo = { type: 'text', text: 'reply by file '+admConfirm.admConfirm(event) };
@@ -228,26 +237,18 @@ async function listCapUpd(event, callback){
                   "data": "action=approve&id=2"
               });              
 
-        }          
+        } 
+         content.push({ 
+            "type": "postback",
+            "label": "Confirm",
+            "data": "confirm"        
+        });         
       });
 
-      content.push({ 
-          "type": "postback",
-          "label": "Confirm",
-          "data": "confirm"        
-      });
-      msg = {
-            "type": "template",
-            "altText": "Change List",
-            "template": {
-                "type": "buttons",
-                "title": "Change List",
-                "text": "List All",
-                "actions": content
-            }
-        }
+     
+      
    // console.log('result checkQueNow', result[0].queue)
-    return callback(msg);
+    return callback(content);
 
   
 }
