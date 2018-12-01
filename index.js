@@ -11,8 +11,9 @@ const listQue = require('./listQue');
 const admConfirm = require('./adminConfirm');
 const myQue = require('./myQue');
 const setQue = require('./setQue');
-const nodemailer = require('nodemailer');
+const postback = require('./postback');
 
+const nodemailer = require('nodemailer');
 var mysql = require('mysql');
 var con = mysql.createConnection({
   host: "119.59.120.32",
@@ -74,7 +75,11 @@ app.post('/callback', line.middleware(config), (req, res) => {
 // event handler
 function handleEvent(event) {
   console.log(event);
-
+  if(event.type == 'postback' && userId === 'U99372d31d3009c721049695f636424c0'){
+    if(event.postback.data == 'confirm'){
+        return client.replyMessage(event.replyToken, postback.handle_postback(event));
+    }
+  }
   
   
   if ((event.type !== 'message' || event.message.type !== 'text' ) 
