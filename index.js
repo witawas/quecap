@@ -218,7 +218,7 @@ async function listCapUpd(event, callback){
    var msg ;
    con.query(sql, function (err, result, fields) {
     var length = Object.keys(result).length;
-          
+        console.log("<<<<<<<<<<<<<<<<<<length="+length);
         for (var i = 0; i < length; i++) 
         {
               var changeNO = result[i].changeNo;
