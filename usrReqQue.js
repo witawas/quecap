@@ -9,10 +9,17 @@ module.exports = {
           console.log(result);
           console.log(result[0].queue);
           //return result[0].queue;
-          x= result[0].queue;
+         // x= result[0].queue;
+         return myCallback(err,result[0].queue);
         });
       });
       
-      return x;
-   }
+     
+   },
+
+  myCallback = function(err, data) {
+    if (err) throw err; // Check for the error and throw if it exists.
+    console.log('got data: '+data); // Otherwise proceed as usual.
+    return data;
+  }
 }
