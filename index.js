@@ -58,6 +58,8 @@ function handleEvent(event) {
 	  echo = { type: 'text', text: 'myQ' };
   }else if(req_message === 'setQ'){
 	  echo = { type: 'text', text: 'setQ' };
+  }else {
+	  echo = { type: 'text', text: req_message };
   }
   
 
