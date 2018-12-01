@@ -11,6 +11,7 @@ module.exports = {
                 "actions": [{
                     "type": "text",
                     "text": "CR 1",
+                    "data": "action=approve&id=1"
                 }, {
                     "type": "postback",
                     "label": "CR 2",
