@@ -1,3 +1,4 @@
+const nodemailer = require('nodemailer');
 module.exports = {
    handle_postback: function(event,con,transporter) {
         var transporter1 = nodemailer.createTransport({
