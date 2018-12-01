@@ -38,10 +38,26 @@ function handleEvent(event) {
 
   // create a echoing text message
   let echo = {};
-  if (event.message.text === 'กี่โมง') {
+  /*if (event.message.text === 'กี่โมง') {
     echo = { type: 'text', text: 'เที่ยง' };
-  } else {
+  } else if("ListQ") {
     echo = { type: 'text', text: event.message.text + 'นะจ้ะ' };  
+  }else {
+    echo = { type: 'text', text: event.message.text + 'นะจ้ะ' };  
+  }*/
+  var req_message = event.message.text;
+  if (req_message === 'booking'){
+
+  }else if(req_message === 'listQ'){
+	  
+  }else if(req_message === 'confirm'){
+	  
+  }else if(req_message === 'q'){
+	  
+  }else if(req_message === 'myQ'){
+	  
+  }else if(req_message === 'setQ'){
+	  
   }
   
 
