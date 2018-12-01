@@ -5,7 +5,7 @@ module.exports = {
             "altText": "Change List",
             "template": {
                 "type": "buttons",
-                "thumbnailImageUrl": "https://www.thesun.co.uk/wp-content/uploads/2017/03/fifa-17-2.jpg?strip=all&w=742&quality=100",
+               // "thumbnailImageUrl": "https://www.thesun.co.uk/wp-content/uploads/2017/03/fifa-17-2.jpg?strip=all&w=742&quality=100",
                 "title": "Change List",
                 "text": "List All",
                 "actions": [{
