@@ -19,8 +19,7 @@ module.exports = {
                 });
                
           };
-          msg =  { type: 'text', text: 'send notification success!! '};
-          return msg;
+          return { type: 'text', text: 'send notification success!! '}
         });
        
    }
