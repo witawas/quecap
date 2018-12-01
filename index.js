@@ -20,13 +20,7 @@ var con = mysql.createConnection({
   password: "GFhPccLkV4",
   database: "gooruapp_queue"
 });
-con.connect(function(err) {
-  if (err) throw err;
-  con.query("SELECT * FROM changeinfo", function (err, result, fields) {
-    if (err) throw err;
-    console.log(result);
-  });
-});
+
 // const  = rerquie('./fiel')
 
 // create LINE SDK config from env variables
