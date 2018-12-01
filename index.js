@@ -120,7 +120,7 @@ async function handleEvent(event) {
       if (req_message === 'booking'){
         echo = { type: 'text', text: 'reply by file '+bookingReq.bookingReq(event) };
       }else  if(req_message === 'q'){
-        const res = await usrReqQue.getQue(event,con)
+        const res = await usrReqQue.getQue(event,con);
         echo = { type: 'text', text: 'reply by file1 ' + res };
         transporter.sendMail(mailOptions, function (err, info) {
           if(err)
