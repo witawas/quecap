@@ -23,7 +23,7 @@ module.exports = {
                 }, {
                     "type": "postback",
                     "label": "Confirm",
-                    "data": "confim"
+                    "data": "confirm"
                 }]
             }
         }
