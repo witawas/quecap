@@ -8,6 +8,8 @@ module.exports = {
         //return msg;
         //data: 'action=approve&id=3'
         //var q = uri.queryKey['q'];
+
+        return msg;
    }
 
 }
