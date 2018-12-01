@@ -2,7 +2,7 @@ module.exports = {
 
   
   getQue: async function(event,con) {
-     //return 'file usrReqQue';
+     //return 'file usrReqQue ';
      var x;
      return async.con.connect( function(err) {
         if (err) throw err;
