@@ -75,8 +75,9 @@ app.post('/callback', line.middleware(config), (req, res) => {
 // event handler
 function handleEvent(event) {
   console.log(event);
+  var userId = event.source.userId;
   if(event.type == 'postback' && userId === 'U99372d31d3009c721049695f636424c0'){
-    console.log("data : "+event.postback.data);
+    console.log(">>>>>>>>>>>>>>data : "+event.postback.data);
     if(event.postback.data == 'confirm'){
          console.log("Step1");
          var msg1 =  { type: 'text', text: 'send notification success!! '};
@@ -103,7 +104,7 @@ function handleEvent(event) {
     echo = { type: 'text', text: event.message.text + 'นะจ้ะ' };  
   }*/
   var req_message = event.message.text;
-  var userId = event.source.userId;
+  
 
   if(userId === 'U99372d31d3009c721049695f636424c0'){
       req_message = req_message.toUpperCase();
