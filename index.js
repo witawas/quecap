@@ -3,6 +3,11 @@
 const line = require('@line/bot-sdk');
 const express = require('express');
 const usrReqQue = require('./usrReqQue');
+const booking = require('./booking');
+const listQue = require('./listQue');
+const admConfirm = require('./adminConfirm');
+const myQue = require('./myQue');
+const setQue = require('./setQue');
 // const  = rerquie('./fiel')
 
 // create LINE SDK config from env variables
@@ -48,17 +53,17 @@ function handleEvent(event) {
   }*/
   var req_message = event.message.text;
   if (req_message === 'booking'){
-	 echo = { type: 'text', text: 'booking' };
+	 echo = { type: 'text', text: 'reply by file '+booking.bookingReq() };
   }else if(req_message === 'listQ'){
-	  echo = { type: 'text', text: 'listQ' };
+	 echo = { type: 'text', text: 'reply by file '+listQue.listQueReq() };
   }else if(req_message === 'confirm'){
-	  echo = { type: 'text', text: 'confirm' };
+	  echo = { type: 'text', text: 'reply by file '+admConfirm.admConfirm() };
   }else if(req_message === 'q'){
     echo = { type: 'text', text: 'reply by file '+usrReqQue.getQue() };
   }else if(req_message === 'myQ'){
-	  echo = { type: 'text', text: 'myQ' };
-  }else if(req_message === 'setQ'){
-	  echo = { type: 'text', text: 'setQ' };
+	  echo = { type: 'text', text: 'reply by file '+myQue.getMyQue() };
+  }else if(req_message === 'setQ'){e
+	   echo = { type: 'text', text: 'reply by file '+setQue.setQue() };
   }else {
 	  echo = { type: 'text', text: req_message };
   }
