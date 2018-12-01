@@ -6,7 +6,6 @@ module.exports = {
      var x;
      return con.connect( function(err) {
         if (err) throw err;
-         let result = un         
          con.query("SELECT queue FROM `capdata` WHERE status = 2 order by queue desc limit 1", function (err, result, fields) {
           //if (err) throw err; 
           //console.log(result); 
