@@ -190,7 +190,7 @@ async function Booking(data,userId, callback){
 
 
 async function checkQueNow(event, callback){
-  con.query("SELECT queue+1 FROM capdata WHERE capdate = CURRENT_DATE and status = '2' order by queue desc limit 1", function (err, result, fields) {
+  con.query("SELECT queue+1 as queue FROM capdata WHERE capdate = CURRENT_DATE and status = '4' order by queue desc limit 1", function (err, result, fields) {
     //console.log('------->>>>>result checkQueNow', result);
    // console.log('--->>>>---->>>>>result checkQueNow', result[0].queue);
     var length = Object.keys(result).length;
