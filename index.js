@@ -106,6 +106,7 @@ async function handleEvent(event) {
 
   // create a echoing text message
   let echo = {};
+  var data = event.message.text.split(" ");
   /*if (event.message.text === 'กี่โมง') {
     echo = { type: 'text', text: 'เที่ยง' };
   } else if("ListQ") {
