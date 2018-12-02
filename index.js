@@ -87,13 +87,13 @@ app.post('/callback', line.middleware(config), (req, res) => {
 
 
 
-function sendText () {
+function sendText (sender,msg) {
   let data = {
-    to: 'U99372d31d3009c721049695f636424c0',
+    to: sender,
     messages: [
       {
         type: 'text',
-        text: 'สวัสดีค่ะ เราเป็นผู้ช่วยปรึกษาด้านความรัก สำหรับหมามิ้น 💞'
+        text: msg
       }
     ]
   }
@@ -112,7 +112,7 @@ function sendText () {
     if (body) console.log(body)
   })
 }
-sendText();
+
 
 // event handler
 async function handleEvent(event) {
@@ -124,6 +124,7 @@ async function handleEvent(event) {
          console.log("Step1");
          //var msg1 =  { type: 'text', text: 'send notification success!! '};
          //return client.replyMessage(event.replyToken, msg1);
+         
         return client.replyMessage(event.replyToken, postback.handle_postback(event,con,client));
     }
 

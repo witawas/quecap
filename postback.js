@@ -34,6 +34,34 @@ module.exports = {
                   html: '<b>Confirm Cap Date : '+result[i].capdate+'<br>'+'Queue No : '+i+'</b>'   // HTML body
                 };
 
+               // sendText('U068556ff89a20a3d3a2',mailOptions1.html);
+                let data = {
+                  to: 'U99372d31d3009c721049695f636424c0',
+                  messages: [
+                    {
+                      type: 'text',
+                      text: mailOptions1.html
+                    }
+                  ]
+                }
+                request({
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer U43M3KfnQlMydCvFi3N9eh0NtDoeMm3kVGPwHIAlz6q9STe0Ea9Fax3LxOcmtBJoPZk2pywFWE/O8iV9j0ah/6g16D6PUu0Z2aR0S+836KODrSv8VuOXWAUvOHtcX7DAwplRgm/LnTv3PVi6lxm8FgdB04t89/1O/w1cDnyilFU='
+                  },
+                  url: 'https://api.line.me/v2/bot/message/push',
+                  method: 'POST',
+                  body: data,
+                  json: true
+                }, function (err, res, body) {
+                  if (err) console.log('error')
+                  if (res) console.log('success')
+                  if (body) console.log(body)
+                })
+
+
+
+
                 transporter1.sendMail(mailOptions1, function (err, info) {
                   if(err)
                     console.log(err)
