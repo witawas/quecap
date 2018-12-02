@@ -85,10 +85,7 @@ app.post('/callback', line.middleware(config), (req, res) => {
     });
 });
 
-exports.LineBotPush = functions.https.onRequest((req, res) => {
- return push(res, 'test');
-  
-});
+
 
 function sendText () {
   let data = {
@@ -116,7 +113,6 @@ function sendText () {
   })
 }
 sendText();
-
 
 // event handler
 async function handleEvent(event) {
