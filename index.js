@@ -16,7 +16,7 @@ const postback = require('./postback');
 const capUpd = require('./capUpd');
 const postback_upd = require('./postback_capUpd');
 
-//const functions = require('firebase-functions');
+
 const request = require('request-promise');
 
 const LINE_MESSAGING_API = 'https://api.line.me/v2/bot/message';
@@ -90,27 +90,32 @@ exports.LineBotPush = functions.https.onRequest((req, res) => {
   
 });
 
-const push = (res, msg) => {
-  return request({
-    method: `POST`,
-    uri: `${LINE_MESSAGING_API}/push`,
-    headers: LINE_HEADER,
-    body: JSON.stringify({
-      to: `U99372d31d3009c721049695f636424c0`,
-      messages: [
-        {
-          type: `text`,
-          text: 'Test auto message.'
-        }
-      ]
-    })
-  }).then(() => {
-    return res.status(200).send(`Done`);
-  }).catch((error) => {
-    return Promise.reject(error);
-  });
+function sendText () {
+  let data = {
+    to: 'U99372d31d3009c721049695f636424c0',
+    messages: [
+      {
+        type: 'text',
+        text: 'สวัสดีค่ะ เราเป็นผู้ช่วยปรึกษาด้านความรัก สำหรับหมามิ้น 💞'
+      }
+    ]
+  }
+  request({
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer U43M3KfnQlMydCvFi3N9eh0NtDoeMm3kVGPwHIAlz6q9STe0Ea9Fax3LxOcmtBJoPZk2pywFWE/O8iV9j0ah/6g16D6PUu0Z2aR0S+836KODrSv8VuOXWAUvOHtcX7DAwplRgm/LnTv3PVi6lxm8FgdB04t89/1O/w1cDnyilFU='
+    },
+    url: 'https://api.line.me/v2/bot/message/push',
+    method: 'POST',
+    body: data,
+    json: true
+  }, function (err, res, body) {
+    if (err) console.log('error')
+    if (res) console.log('success')
+    if (body) console.log(body)
+  })
 }
-
+sendText();
 
 
 // event handler
