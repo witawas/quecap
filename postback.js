@@ -18,7 +18,7 @@ module.exports = {
         });
 
        // var sql = "select capdata.id as id from capdata inner join changeinfo on capdata.changeNo = changeinfo.changeNo where capdata.status = '1' order by changeinfo.deploydate,capdata.reqdate";
-        var sql = "select capdata.id as id,changeinfo.email as email,capdata.changeNo as chanangeno,changeinfo.deploydate-1 as capdate from capdata inner join changeinfo on capdata.changeNo = changeinfo.changeNo where capdata.status = '1' order by changeinfo.deploydate,capdata.reqdate";
+        var sql = "select capdata.id as id,changeinfo.email as email,capdata.changeNo as chanangeno,changeinfo.deploydate-1 as capdate,capdata.lineid as lineid from capdata inner join changeinfo on capdata.changeNo = changeinfo.changeNo where capdata.status = '1' order by changeinfo.deploydate,capdata.reqdate";
         //var msg;
         con.query(sql, function (err, result, fields) 
         {
@@ -34,21 +34,22 @@ module.exports = {
                     if (err) throw err;
                     
                 });
-
+                var lineid=result[i].lineid;
+                var linemsg = 'Confirm Change No : '+result[i].chanangeno+' Cap Date : '+result[i].capdate+'Queue No : '+(i+1);
                 var mailOptions1 = {
                   from: 'wittawas12t@gmail.com',                // sender
                   to: result[i].email,                // list of receivers
                   subject: 'Confirm Cap Date : '+result[i].capdate,              // Mail subject
-                  html: '<b>Confirm Cap Date : '+result[i].capdate+'<br>'+'Queue No : '+i+'</b>'   // HTML body
+                  html: '<b>Confirm Change No : '+result[i].chanangeno+' Cap Date : '+result[i].capdate+'<br>'+'Queue No : '+(i+1)+'</b>'   // HTML body
                 };
 
                // sendText('U068556ff89a20a3d3a2',mailOptions1.html);
                 let data = {
-                  to: 'U99372d31d3009c721049695f636424c0',
+                  to: lineid,
                   messages: [
                     {
                       type: 'text',
-                      text: mailOptions1.html
+                      text: linemsg
                     }
                   ]
                 }
