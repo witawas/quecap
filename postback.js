@@ -10,7 +10,7 @@ module.exports = {
         });
 
        // var sql = "select capdata.id as id from capdata inner join changeinfo on capdata.changeNo = changeinfo.changeNo where capdata.status = '1' order by changeinfo.deploydate,capdata.reqdate";
-        var sql = "select capdata.id as id,changeinfo.email as email,capdata.changeNo as chanangeno,changeinfo.deploydate+1 as capdate from capdata inner join changeinfo on capdata.changeNo = changeinfo.changeNo where capdata.status = '1' order by changeinfo.deploydate,capdata.reqdate";
+        var sql = "select capdata.id as id,changeinfo.email as email,capdata.changeNo as chanangeno,changeinfo.deploydate-1 as capdate from capdata inner join changeinfo on capdata.changeNo = changeinfo.changeNo where capdata.status = '1' order by changeinfo.deploydate,capdata.reqdate";
         //var msg;
         con.query(sql, function (err, result, fields) 
         {
