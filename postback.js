@@ -1,4 +1,12 @@
 const nodemailer = require('nodemailer');
+const request = require('request-promise');
+
+const LINE_MESSAGING_API = 'https://api.line.me/v2/bot/message';
+const LINE_HEADER = {
+  'Content-Type': 'application/json',
+  'Authorization': `Bearer U43M3KfnQlMydCvFi3N9eh0NtDoeMm3kVGPwHIAlz6q9STe0Ea9Fax3LxOcmtBJoPZk2pywFWE/O8iV9j0ah/6g16D6PUu0Z2aR0S+836KODrSv8VuOXWAUvOHtcX7DAwplRgm/LnTv3PVi6lxm8FgdB04t89/1O/w1cDnyilFU=`
+};
+
 module.exports = {
    handle_postback: function(event,con,transporter) {
         var transporter1 = nodemailer.createTransport({
