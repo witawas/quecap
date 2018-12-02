@@ -159,6 +159,9 @@ async function handleEvent(event) {
       }
   }else{
 
+    req_message = req_message.toUpperCase();
+
+
        if (data[0] === 'Booking'){
        await Booking(data[1],event.source.userId, function(result){
       console.log('resultja ', result);
@@ -178,7 +181,7 @@ async function handleEvent(event) {
 
     // handleText(event.message, event.replyToken, event.source);
       
-    }else  if(req_message === 'q'){
+    }else  if(req_message === 'Q'){
         //console.log("do this"); 
         await checkQueNow(event, function(result){
         console.log('resultja ', result);
@@ -195,9 +198,9 @@ async function handleEvent(event) {
             console.log(info);
         });*/
 
-      }else if(req_message === 'myQ'){
+      }else if(req_message === 'MYQ'){
         echo = { type: 'text', text: 'reply by file '+myQue.getMyQue(event) };
-      }else if(req_message === 'setQ'){
+      }else if(req_message === 'SETQ'){
         echo = { type: 'text', text: 'reply by file '+setQue.setQue(event) };
       }else{
           echo = { type: 'text', text: 'ขออภัยคุณไม่มีสิทธิ์ใช้งานในส่วนนี้นะครับ'};
