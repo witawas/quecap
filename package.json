@@ -13,6 +13,10 @@
     "@line/bot-sdk": "^6.4.0",
     "express": "^4.16.4",
     "nodemailer": "*",
-    "mysql": "^2.16.0"
+    "mysql": "^2.16.0",
+    "firebase-admin": "~5.12.1",
+    "firebase-functions": "^1.1.0",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2"
   }
 }
