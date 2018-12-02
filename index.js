@@ -16,6 +16,8 @@ const postback = require('./postback');
 const capUpd = require('./capUpd');
 const postback_upd = require('./postback_capUpd');
 
+const functions = require('firebase-functions');
+const request = require('request-promise');
 
 const LINE_MESSAGING_API = 'https://api.line.me/v2/bot/message';
 const LINE_HEADER = {
