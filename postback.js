@@ -35,7 +35,7 @@ module.exports = {
                     
                 });
                 var lineid=result[i].lineid;
-                var linemsg = 'Confirm Change No : '+result[i].chanangeno+' Cap Date : '+result[i].capdate+'Queue No : '+(i+1);
+                var linemsg = 'Confirm Change No : '+result[i].chanangeno+' Cap Date : '+result[i].capdate+' Queue No : '+(i+1);
                 var mailOptions1 = {
                   from: 'wittawas12t@gmail.com',                // sender
                   to: result[i].email,                // list of receivers
