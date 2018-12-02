@@ -18,7 +18,7 @@ module.exports = {
 
 
        // var sql = "select capdata.id as id from capdata inner join changeinfo on capdata.changeNo = changeinfo.changeNo where capdata.status = '1' order by changeinfo.deploydate,capdata.reqdate";
-        var sql = "SELECT email from changeinfo where changeno = ( "
+        var sql = "SELECT email,changeno from changeinfo where changeno = ( "
                 +" select changeno from capdata where capdate = CURRENT_DATE and queue = ("
                 +" select queue+2 from capdata where capdate = CURRENT_DATE and status = '4' order by queue desc limit 1))";
         //var msg;
@@ -30,8 +30,8 @@ module.exports = {
                 var mailOptions1 = {
                   from: 'wittawas12t@gmail.com',                // sender
                   to: result[0].email,                // list of receivers
-                  subject: 'ถึงเวลาที่จะต้องเข้า Cap ของวันที่ : '+result[0].capdate,              // Mail subject
-                  html: '<b> ถึงเวลาเข้าห้อง CAP แล้วครับ</b>'   // HTML body
+                  subject: 'ถึงเวลาที่จะต้องเข้า Cap ของ CR '+result[0].changeno,              // Mail subject
+                  html: '<b> เตรียมตัวเข้า  CAP ได้แล้วครับ</b>'   // HTML body
                 };
 
                 transporter1.sendMail(mailOptions1, function (err, info) {
